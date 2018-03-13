@@ -1,0 +1,57 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <input id="first" type="text" value="7"> 
+    <select id="operation">
+      <option value="+">    +   </option>
+      <option value="-">    -   </option>
+      <option value="*">    *   </option>
+      <option value="/">    /   </option>
+    </select>
+    <input id="second" type="text" value="2">
+    <button onClick="button_click()">Enter</button>
+
+    <p id="output"></p>
+
+    <script>
+        function button_click(){
+            let x = Number(document.getElementById("first").value)
+            let y = Number(document.getElementById("second").value)
+            let operation = document.getElementById("operation").value
+            let z = 0
+
+            switch (operation) {
+                case "+":
+                    z = (function(){ return x + y })(x,y)
+                    break;
+                case "-":
+                    z = (function(){ return x - y })(x,y)
+                    break;
+                case "*":
+                    z = (function(){ return x * y })(x,y)
+                    break;
+                case "/":
+                    z = (function(){ 
+                        if (y == 0){
+                            return 'undefined'; 
+                        }
+                        return x / y 
+                    })(x,y)
+                    break;
+            }
+            document.getElementById("output").innerHTML = x + ' ' + operation + ' ' + y + ' = ' + z
+            document.getElementById("output").style.backgroundColor = "red"
+            document.getElementById("output").style.borderWidth     = 1
+            document.getElementById("output").style.borderStyle     = "solid"
+            document.getElementById("output").style.padding         = "10px"
+        }
+    </script>
+</body>
+</html>

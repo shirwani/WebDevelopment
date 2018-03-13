@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="./data.js"></script>
+    <style>
+        * {
+            font-family:        Arial;
+            font-size:          13px;
+        }
+        tr {
+            background-color:   white;
+        }
+        tr:hover {
+            background-color:   #dddddd;
+        }
+        td {
+            padding:            5px;
+        }
+        th {
+            height:             30px;
+            background-color:   purple;
+            color:              #ffffff;
+            font-weight:        normal;
+        }
+    </style>
+    <script>
+        function show_data(){
+            vehicles = sort_by(_vehicles,"Make");
+            let str = '<table border="0" cellspacing="1" bgcolor="#888888">'
+            str += `<th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Exterior</th>
+                    <th>Interior</th>
+                    <th>Mileage</th>
+                    <th>VIN</th>
+                    <th>Condition</th>
+                    `
+            for (let i=0; i<vehicles.length; i++){
+                let v = vehicles[i]
+                let idx = i+1
+                str += '<tr>'
+                    + '<td>' + v.Make       + '</td>'
+                    + '<td>' + v.Model      + '</td>'
+                    + '<td>' + v.Year       + '</td>'
+                    + '<td>' + v.Price      + '</td>'
+                    + '<td>' + v.Exterior   + '</td>'
+                    + '<td>' + v.Interior   + '</td>'
+                    + '<td>' + v.Mileage    + '</td>'
+                    + '<td>' + v.Vin        + '</td>'
+                    + '<td>' + v.Condition  + '</td>'
+                    + '</tr>'
+            }
+            str += '</table>'
+            document.getElementById("output").innerHTML = str
+        }
+
+        function sort_by(objs,by){ 
+            return objs.sort(
+                function(a,b){
+                    if(a[by] < b[by]) { return -1 } else if (a[by] > b[by]) { return 1 } else { return 0 }
+                }
+            );   
+        }
+
+    </script>
+</head>
+<body onload="show_data()">
+    <div id="output"></div>        
+</body>
+</html>

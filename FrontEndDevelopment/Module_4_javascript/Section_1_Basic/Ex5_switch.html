@@ -1,0 +1,62 @@
+<html>
+<head>
+    <style>
+        #output {
+            padding:    20px;
+            border:     1px;
+        }
+    </style>
+    <script>
+        function show_car(){
+            let menu = document.getElementById("cars")
+            let car  = menu.options[menu.selectedIndex].text
+            let color;
+
+            switch (car) {
+                case "Ford":
+                    color = "Red"
+                    break;
+                case "Volvo":
+                    color= "Blue"
+                    break;
+                case "Chevy":
+                    color = "Orange"
+                    break;
+                case "Honda":
+                    color = "Grey"
+                    break;
+                case "Toyota":
+                    color = "Magenta"
+                    break;
+                case "Audi":
+                    color = "Yellow"
+                    break;
+                default:
+                    color = "Pink"
+            }
+
+            document.getElementById("output").innerHTML = color +  " " + car
+            document.getElementById("output").style.backgroundColor = color
+            document.getElementById("output").style.borderWidth     = 1
+            document.getElementById("output").style.borderStyle     = "solid"
+        }
+    </script>
+</head>
+<p>
+    <p>
+        <h3>Select a car:</h3>
+        <select id="cars">
+          <option value="ford">     Ford    </option>
+          <option value="volvo">    Volvo   </option>
+          <option value="chevy">    Chevy   </option>
+          <option value="honda">    Honda   </option>
+          <option value="toyota">   Toyota  </option>
+          <option value="audi">     Audi    </option>
+          <option value="bmw">      BMW     </option>
+          <option value="nissan">   Nissan  </option>
+        </select>
+    </p>
+    <button onClick="show_car()">Enter</button>
+    <p id="output"></p>
+</body>
+</html>

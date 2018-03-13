@@ -1,0 +1,48 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+        #output {
+            padding: 20px;
+        }
+    </style>
+    <script>
+        function show_grade(){
+            let score = document.getElementById("score").value
+            let grade;
+            let color = "red";
+
+            if(score < 60){
+                grade = "F"
+                color = "red"
+            }else if(score < 70){
+                grade = "D"
+                color = "#ff3399"
+            }else if(score < 80){
+                grade = "C"
+                color = "orange"
+            }else if(score < 90){
+                grade = "B"
+                color = "#008800"
+            }else if(score <= 100){
+                grade = "A"
+                color = "#00ff00"
+            }else{
+                alert("ERROR: You need to enter a number between 0 and 100.")
+            }
+            document.getElementById("output").innerHTML = "Grade: " + grade
+            document.getElementById("output").style.backgroundColor = color
+            document.getElementById("output").style.borderWidth     = 1
+            document.getElementById("output").style.borderStyle     = "solid"
+        }
+    </script>
+</head>
+<body>
+    Enter any number between 0 and 100: <input id="score" type="text">
+    <button onClick="show_grade()">Enter</button>
+    <p id="output"></p>
+</body>
+</html>

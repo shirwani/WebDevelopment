@@ -1,0 +1,51 @@
+<html>
+<!--
+    Navigate nodes:
+        parentNode
+        childNodes[nodenumber]
+        firstChild
+        lastChild
+        nextSibling
+        previousSibling
+-->
+<head>
+    <style>
+        div{
+            padding:            20px;
+            border:             1px solid black;
+        }
+        #One:hover{
+            background-color:   yellow;
+        }
+        #Two:hover{
+            background-color:   blue;
+        }
+        #Three:hover{
+            background-color:   orange;
+        }
+    </style>
+    <script>
+        function disp_family(e){
+            console.log(e.parentNode)
+            console.log(e.childNodes.length)
+            console.log(e.childNodes[0])
+            console.log(e.childNodes[1])
+            console.log(e.childNodes[2])
+            console.log(e.childNodes[3])
+            console.log(e.childNodes[4])
+        }
+    </script>
+</head>
+<body>
+    Go to  JavaScript Console...
+    <br><hr><br>
+    <div id="One" onClick="disp_family(this)">HI
+        <div id="Two" onClick="disp_family(this)">11
+        </div>
+        <div id="Three" onClick="disp_family(this)">22
+        </div>
+    </div>
+</body>
+</html>
+
+

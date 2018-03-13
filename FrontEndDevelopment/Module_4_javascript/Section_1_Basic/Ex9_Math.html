@@ -1,0 +1,26 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        var x = Math.PI
+        let str = ''
+                + x + '<br>'
+                + Math.round(Math.PI) + '<br>'
+                + Math.ceil(Math.PI)  + '<br>'
+                + Math.floor(Math.PI) + '<br>'
+                + Math.min(10,-30,5,80,4) + '<br>'
+                + Math.max(10,-30,5,80,4) + '<br>'
+
+        document.getElementById("output").innerHTML = str
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+    <style>
+        input{
+            text-align: right;
+        }
+    </style>
+    <script>
+        function button_click(){
+            let x = document.getElementById("first").value      // Get value from element with id=first
+            let y = document.getElementById("second").value     // Get value from element with id=second
+            let z = Number(x) + Number(y)
+            let output_string = x + ' + ' + y + ' = ' + z
+            alert(output_string)
+        }
+    </script>
+</head>     
+<body>
+    <input id="first" type="text" value="7"> + <input id="second" type="text" value="2">
+    <button onClick="button_click()">Enter</button>
+</body>
+</html>

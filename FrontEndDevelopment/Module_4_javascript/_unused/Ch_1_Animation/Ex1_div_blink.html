@@ -1,0 +1,44 @@
+<html>
+<head>
+    <style>
+        #container {
+            width:      400px;
+            height:     400px;
+            position:   relative;
+            background: #888888;
+        }
+        #brick {
+            width:      50px;
+            height:     50px;
+            position:   absolute;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id ="container">
+        <div id ="brick"></div>
+    </div>
+
+    <script>
+        function myMove(){
+            var brick = document.getElementById("brick");
+            var color = "yellow";
+            var id    = setInterval(frame, 1000);
+
+            brick.style.top  = 100 + 'px';
+            brick.style.left = 100 + 'px';
+
+            function frame(){
+                if (color == "yellow"){
+                    color = "green"
+                } else {
+                    color = "yellow"
+                }
+                brick.style.backgroundColor = color
+            }
+        }
+        myMove()
+    </script>
+</body>
+</html>

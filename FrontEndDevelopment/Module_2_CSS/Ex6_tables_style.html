@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        /***********/
+        /* Style A */
+        /***********/
+        table.A {
+            border-collapse:    collapse;
+            width:              100%;
+        }
+        table.A th {
+            padding:            15px;
+            border-bottom:      1px solid grey;
+            background-color:   white;
+        }
+        table.A tr:nth-child(even) {
+            background-color:   #f2f2f2;
+        }
+        table.A tr:hover {
+            background-color:   yellow;
+        }
+        table.A td {
+            padding:            15px;
+            border-bottom:      1px solid grey;
+            text-align:         center;
+        }
+
+
+        /***********/
+        /* Style B */
+        /***********/
+        table.B {
+            border-collapse:    collapse;
+            width:              100%;
+        }
+        table.B th {
+            padding:            15px;
+            border:             1px solid teal;
+            background-color:   grey;
+            color:              white;
+        }
+        table.B tr {
+            background-color:   #dddddd;
+        }
+        table.B tr:hover {
+            background-color:   teal;
+            color:              white;
+        }
+        table.B td {
+            padding:            15px;
+            border:             1px solid teal;
+        }
+
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Savings</th>
+        </thead>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+        </tr>
+        <tr>
+            <td>Lois</td>
+            <td>Griffin</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="A">
+        <thead>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Savings</th>
+        </thead>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+        </tr>
+        <tr>
+            <td>Lois</td>
+            <td>Griffin</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="B">
+        <thead>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Savings</th>
+        </thead>
+        <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+        </tr>
+        <tr>
+            <td>Lois</td>
+            <td>Griffin</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+        </tr>
+    </table>
+
+</body>
+</html>

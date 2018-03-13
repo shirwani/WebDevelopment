@@ -1,0 +1,164 @@
+body {
+	font-family: 		Arial;
+	background-color: 	#eeeeee;
+}
+#header {
+	background-color: 	purple;
+	color:				white;
+	font-size:			30px;
+	padding: 			10px;
+	border:				1px solid #dddddd;
+}
+#searchtable tr {
+	background-color:   white;
+	font-family:		Arial;
+	font-size: 			12px;
+	vertical-align:		top;
+}
+.searchtable_cell_not_found{
+	font-size:			15px;
+	padding:			20px;
+	border:				1px solid #cc0000;
+	background-color:	#dddddd;
+}
+img.thumb {
+	width:				200px;
+	padding:			1px;
+	border: 			1px solid #ffffff;
+	cursor:				pointer;
+}
+img.list_more {
+	height:				6px;
+}
+span.list_more {
+	color:				#777777;
+	font-weight:		bold;
+	font-size:			11px;
+}
+img.rating {
+	width:				10px;
+}
+.list {
+	color: 				#444444;
+}
+.list_header {
+	font-size:			18px;
+}
+.list_price {
+	font-weight: 		bold;
+	font-size: 			20px;
+	color:				#222222;
+}
+.list_mileage {
+	font-size: 			12px;
+}
+li.list_attrib {
+	float:				left;
+}
+.list_dealer_name {
+	font-size:			15px;
+}
+.list_dealer_phone {
+	font-size:			12px;
+}
+.list_dealer_address {
+	font-size:			12px;
+}
+.link {
+	color: 				#0000bb;
+	cursor:				pointer;
+}
+.list_car_gap {
+	background-color:	#eeeeee;
+	border-top:         1px solid #888888;
+}
+.contact_dealer {
+	background-color:	white;
+	color:				purple;
+	padding:			5px;
+	border:				1px solid purple;
+	border-radius:      20px;
+	cursor:				pointer;
+	text-decoration:	none;
+}
+#search_form {
+	height:				1000px;
+	background-color:	#eeeeee;
+}
+#list_sort_by{
+	background-color:	#993399;
+	color:				#ffffff;
+	text-align:			right;
+	font-size:			12px;
+	height:				40px;
+	vertical-align:		middle;
+	border-bottom:      5px solid #eeeeee;
+	border-top:      	5px solid #eeeeee;
+}
+select.sort_by {
+	border:				1px solid #bbbbbb;
+	border-radius:      5px;
+	font-size:			12px;
+	padding:			10px;
+	background-color:	white;
+	cursor:				pointer;
+}
+.filter_table {
+	border-bottom:      1px solid #dddddd;
+	background-color:	#ffffff;
+	padding: 			5px;
+}
+.filter_list {
+	font-size:			12px;
+	overflow-y: 		scroll;
+	width:				250px;
+}
+.filter_list_header {
+	font-size:			16px;
+	font-weight: 		bold;
+	color:				#666666;
+	border-bottom:      1px solid #ffffff;
+}
+.filter_list_price_text {
+	font-size:			12px;
+	text-align:			right;
+}
+#car_details_div_overlay {
+    position: 			fixed; /* Sit on top of the page content */
+    display: 			none;  /* Hidden by default */
+    width: 				100%;  /* Full width (cover the whole page) */
+    height: 			100%;  /* Full height (cover the whole page) */
+    top: 				0;
+    left: 				0;
+    right: 				0;
+    bottom: 			0;
+    background-color: 	rgba(10,10,10,.95); /* Black background with opacity */
+    z-index: 			2; /* Specify a stack order in case you're using a different order for other elements */
+    color:				#ffffff;
+	font-size:			13px;
+}
+.modal_image {
+	padding:			10px;
+	display: 			block;
+	width: 				50%;
+	max-width: 			500px;
+}
+.modal_car_details {
+	padding: 			10px;
+}
+.pagination {
+	float:				right;
+}
+.pagination a {
+	padding:			5px 10px;
+	text-decoration:	none;
+	color:				black;
+}
+
+.pagination a:hover {
+	background-color: 	#dddddd;
+}
+.pagination a.active {
+	background-color: 	purple;
+	color:				white;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {                         /* Apply to every element */
+            border:                 1px solid green;
+            font-size:              12px;
+            background-color:       white;
+            font-family:            Arial;
+            padding:                10px;
+            margin:                 1px;
+        }
+        div {                       /* Apply to every div */
+            background-color:       lime; 
+        }
+        .red {                      /* Apply to everything with class=red */
+            background-color:       red; 
+        }
+        #pink {                     /* Apply to everything with id=pink */
+            background-color:       pink;
+        }
+        .highlight {                /* Apply to everything with class=highlight */
+            background-color:       yellow;
+        }
+        #pink + div {               /* Apply to div that follows an element with id=pink */
+            background-color:       orange;
+        }
+        li a {                      /* Apply to any a (link) that is a child of li */
+            font-style:             italic;
+            font-size:              20px;
+        }
+        input[type="text"] {        /* Apply to every input of type text */
+            background-color:       pink;
+        }
+        input[type="text"]:hover {  /* Apply to every input of type text */
+            background-color:       yellow;
+        }
+        li:nth-of-type(even) {      /* Apply to every even numbered li */
+            background-color:       #bbbbbb;
+        }
+        li.foo {                    /* Apply to every li with class=foo */
+            background-color:       aqua;
+        }
+    </style>
+</head>
+<body>
+    <span class="foo">
+        This demonstrates the different ways to select <a href="#" class="highlight">HTML</a> elements for styling.
+    </span>
+    <ul>
+        <li> Facebook </li>
+        <li> Amazon </li>
+        <li> <a href="#">Google</a> </li>
+        <li> Microsoft </li>
+        <li> Reddit </li>
+    </ul>
+    <input type="text" placeholder="Text input field">
+    <br><br>
+
+    <ol>Style precedence:
+        <li> Inline: style="..." </li>
+        <li> .id {...} </li>
+        <li  class="foo"> #class {...} </li>
+        <li> Element: li {...} </li>
+    </ol>
+
+    <br>
+    <div>[div:lime]</div>
+    <div class="red">[div:lime]->[class:red]</div>
+    <div class="red" id="pink">[div:lime]->[class:red]->id[pink]</div>
+    <div class="red" id="pink" style="background-color:teal;color:white">[div:lime]->[class:red]->id[pink]->[inline:teal]</div>
+    <div>[#pink + div]</div>
+</body>
+</html>

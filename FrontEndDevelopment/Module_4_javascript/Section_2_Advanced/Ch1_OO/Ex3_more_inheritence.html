@@ -1,0 +1,136 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color:   white;
+            font-family:        Arial;
+            font-size:          12px;
+        }
+        tr {
+            background-color:   white;
+            color:              black;
+            font-size:          12px;
+            text-align:         center;
+        }
+        span.AddChild {
+            background-color:   white;
+            color:              blue;
+            font-size:          12px;
+            text-align:         center;
+            cursor:             pointer;
+        }
+        span.AddChild:hover {
+            text-decoration:    underline;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="1" cellspacing="1">
+        <tr><td align="right">Select animal(s) to create:</td>
+            <td align="left">
+              <input id="cat_checkbox"   type="checkbox" name="type" value="cat"   checked>Cat
+              <input id="dog_checkbox"   type="checkbox" name="type" value="dog"   checked>Dog
+              <input id="fox_checkbox"   type="checkbox" name="type" value="fox"   checked>Fox
+              <input id="other_checkbox" type="checkbox" name="type" value="other" checked>Other
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <input type="button" value="Create" onClick="addAnimals()">
+    <br/><hr/><br/>
+    <div id="output"></div>
+    <script>
+
+        var id = 0
+        var animals = []
+
+        /*** Class Animal ***/
+        class Animal {
+            constructor(name){
+                this.id = id++
+                this.name = name
+                this.offsprings = 0
+            }
+            haveABaby(){
+                animals.push(new Animal(this.name + '.' + ++this.offsprings))
+            }
+            toString(){
+                return ""
+                    + "<tr>"
+                    + "<td align=right>" + this.constructor.name  + ": </td>"
+                    + "<td align=left>"  + this.name + "</td>"
+                    + "<td align=left>(" + this.offsprings + " children)</td>"
+                    + `<td align=right><span class="AddChild" onClick="addChild(`+this.id+`)">[Add Child]</span></td>`
+                    + "</tr>"
+            }
+        }
+
+        /*** Class Cat ***/
+        class Cat extends Animal {
+            constructor(name){
+                super(name)
+            }
+            haveABaby(){
+                animals.push(new Cat(this.name + '.' + ++this.offsprings))
+            }
+        }
+
+        /*** Class Dog ***/
+        class Dog extends Animal {
+            constructor(name){
+                super(name)
+            }
+            haveABaby(){
+                animals.push(new Dog(this.name + '.' + ++this.offsprings))
+            }
+        }
+
+        /*** Class Fox ***/
+        class Fox extends Animal {
+            constructor(name){
+                super(name)
+            }
+            haveABaby(){
+                animals.push(new Fox(this.name + '.' + ++this.offsprings))
+            }
+        }
+
+        /*** Add child ***/
+        function addChild(objId){
+            animals[objId].haveABaby()
+            printAnimalsTable()
+        }
+
+        /*** Print all animals in a table ***/
+        function printAnimalsTable(){
+            let htmlstr = `
+                <table border=0 cellpadding=1 cellspacing=1 bgcolor=white>
+            `
+            for(let i=0; i<animals.length; i++){
+                htmlstr += animals[i]
+            }
+            htmlstr += '</table>'
+            document.getElementById("output").innerHTML = htmlstr
+        }
+
+        /*** Add animal based on user input into HTML form ***/
+        function addAnimals(){
+            animals = []
+
+            if(document.getElementById("cat_checkbox").checked){
+                animals.push(new Cat("Felix"))
+            }
+            if(document.getElementById("dog_checkbox").checked){
+                animals.push(new Dog("Woofer"))
+            }
+            if(document.getElementById("fox_checkbox").checked){
+                animals.push(new Fox("Foxy"))
+            }
+            if(document.getElementById("other_checkbox").checked){
+                animals.push(new Animal("Molly"))
+            }
+            printAnimalsTable()
+        }
+    </script>
+</body>
+</html>

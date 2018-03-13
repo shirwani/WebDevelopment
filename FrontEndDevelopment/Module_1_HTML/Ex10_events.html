@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Events</title>
+</head>
+<body>
+    <em>Open JavaScript Console: View -> Developer -> JavaScript Console</em>
+    
+    <br><hr><br>
+
+	<button 
+        onClick="console.log('Button Clicked')"
+        onMouseOver="console.log('Mouse Moved Over Button')"
+        onMouseOut="console.log('Mouse Moved Out Of Button')"
+    >
+        Click Me
+    </button>
+
+    <br><br>
+
+    <select 
+        onChange="console.log('Selection Changed')"
+        onClick="console.log('Dropdown Clicked')" 
+    >
+        <option>Acura</option>
+        <option>BMW</option>
+        <option>Ford</option>
+        <option>Toyota</option>
+    </select>
+
+    <br><br>
+
+    <input type="text" value="Select/change this text"
+        onSelect="console.log('Text Selected')"
+        onChange="console.log('Text Changed')"
+    >
+
+</body>
+</html>

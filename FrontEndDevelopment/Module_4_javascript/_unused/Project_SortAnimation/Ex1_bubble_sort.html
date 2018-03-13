@@ -1,0 +1,85 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        table {
+            background-color:   white;
+            padding:            2px;
+        }
+        td {
+            background-color:   white;
+            width:              20px;
+            text-align:         center;
+        }
+    </style>
+    <script>
+        /**********
+         * Bubble sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Bubble_sort
+         *
+         * Keep going through array, swapping element pairs if left element > right element, until no swaps can be made.
+         **********/
+        async function bubbleSortArray(){
+            var array = [5, 1, 12, -5, 16, 2, 4, -10, 21]
+            disp_array("unsortedArray",array,-1,-1,"")
+
+            while(1){
+                var flag = 0
+                var color
+                for(var i=0; i<array.length-1; i++){
+                    await sleep(500);
+                    disp_array("sortedArray",array,i,i+1,"orange")
+                    if(array[i] > array[i+1]){
+                        tmp = array[i]
+                        array[i] = array[i+1]
+                        array[i+1] = tmp
+                        flag++
+                        await sleep(500);
+                        disp_array("sortedArray",array,i,i+1,"red")
+                    }
+                }
+                if(flag == 0){
+                    await sleep(500);
+                    disp_array("sortedArray",array)
+                    break
+                }
+            }
+        }
+
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function disp_array(span,array,x,y,xcolor){
+            var str = ""
+            str += "<table>"
+            str += "<tr>"
+            var color = "white"
+
+            for(var i=0; i<array.length; i++){
+                if(i == x || i == y){
+                    color = xcolor
+                }else{
+                    color = "white"
+                }
+                str += "<td style='background-color:" + color + "'>" + array[i] + "</td>"
+            }
+            str += "</tr>"
+            str += "</table>"
+            document.getElementById(span).innerHTML = str
+        }
+    </script>
+</head>
+<body onload = "bubbleSortArray()">
+    <h2>Bubble Sort</h2>
+    <hr><br>
+    Unsorted array:<br>
+    <span id="unsortedArray"></span>
+    <br>
+    Sorted array:<br>
+    <span id="sortedArray"></span>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+    <style>
+        td {
+            width:      30px;
+            height:     30px;
+            background: #aaaaaa;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var gameOver = false
+        function putMark(id){
+            if(!gameOver){
+                if( document.getElementById(id).innerHTML == ''){
+                    document.getElementById(id).innerHTML = getNextMark()
+                }
+                if(rowsCrossed() || columnsCrossed() || diagonalsCrossed()){
+                    gameOver = true
+                }
+            }
+        }
+
+        /**************************************
+         * Count all 'X' and 'O' in the grid.
+         *
+         * If there are more 'X' than 'O',
+         *      Return 'O'
+         * Otherwise,
+         *      Return 'X'
+         **************************************/
+        function getNextMark(){
+            var x = 0
+            var o = 0
+
+            // Count all 'X'
+            if(isX("1,1")){ x++ }
+            if(isX("1,2")){ x++ }
+            if(isX("1,3")){ x++ }
+            if(isX("2,1")){ x++ }
+            if(isX("2,2")){ x++ }
+            if(isX("2,3")){ x++ }
+            if(isX("3,1")){ x++ }
+            if(isX("3,2")){ x++ }
+            if(isX("3,3")){ x++ }
+
+            // Count all 'O'
+            if(isO("1,1")){ o++ }
+            if(isO("1,2")){ o++ }
+            if(isO("1,3")){ o++ }
+            if(isO("2,1")){ o++ }
+            if(isO("2,2")){ o++ }
+            if(isO("2,3")){ o++ }
+            if(isO("3,1")){ o++ }
+            if(isO("3,2")){ o++ }
+            if(isO("3,3")){ o++ }
+
+            if(x > o){
+                return('O')
+            }else{
+                return('X')
+            }
+        }
+
+        function isX(id){
+            return (document.getElementById(id).innerHTML == 'X')
+        }
+        function isO(id){
+            return (document.getElementById(id).innerHTML == 'O')
+        }
+        function crossOut(id){
+            document.getElementById(id).style.background = "red"
+        }
+
+        /************************************
+         * If all boxes in the same row are all 'X' or all 'O',
+         *      Cross out the row
+         *      Return true
+         ************************************/
+        function rowsCrossed(){
+            if( isX("1,1") && isX("1,2") && isX("1,3") ||
+                isO("1,1") && isO("1,2") && isO("1,3") ){
+                crossOut("1,1")
+                crossOut("1,2")
+                crossOut("1,3")
+                return(true)
+            }
+            if( isX("2,1") && isX("2,2") && isX("2,3") ||
+                isO("2,1") && isO("2,2") && isO("2,3") ){
+                crossOut("2,1")
+                crossOut("2,2")
+                crossOut("2,3")
+                return(true)
+            }
+            if( isX("3,1") && isX("3,2") && isX("3,3") ||
+                isO("3,1") && isO("3,2") && isO("3,3") ){
+                crossOut("3,1")
+                crossOut("3,2")
+                crossOut("3,3")
+                return(true)
+            }
+        }
+
+        /************************************
+         * If all boxes in the same column are all 'X' or all 'O',
+         *      Cross out the column
+         *      Return true
+         ************************************/
+        function columnsCrossed(){
+            if( isX("1,1") && isX("2,1") && isX("3,1") ||
+                isO("1,1") && isO("2,1") && isO("3,1") ){
+                crossOut("1,1")
+                crossOut("2,1")
+                crossOut("3,1")
+                return(true)
+            }
+            if( isX("1,2") && isX("2,2") && isX("3,2") ||
+                isO("1,2") && isO("2,2") && isO("3,2") ){
+                crossOut("1,2")
+                crossOut("2,2")
+                crossOut("3,2")
+                return(true)
+            }
+            if( isX("1,3") && isX("2,3") && isX("3,3") ||
+                isO("1,3") && isO("2,3") && isO("3,3") ){
+                crossOut("1,3")
+                crossOut("2,3")
+                crossOut("3,3")
+                return(true)
+            }
+        }
+
+        /************************************
+         * If all boxes along the diagnola are all 'X' or all 'O',
+         *      Cross out the diagonal
+         *      Return true
+         ************************************/
+        function diagonalsCrossed(){
+            if( isX("1,1") && isX("2,2") && isX("3,3") ||
+                isO("1,1") && isO("2,2") && isO("3,3") ){
+                crossOut("1,1")
+                crossOut("2,2")
+                crossOut("3,3")
+                return(true)
+            }
+            if( isX("1,3") && isX("2,2") && isX("3,1") ||
+                isO("1,3") && isO("2,2") && isO("3,1") ){
+                crossOut("1,3")
+                crossOut("2,2")
+                crossOut("3,1")
+                return(true)
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="0" cellpadding="10" cellspacing="1" bgcolor="ffffff">
+        <tr>
+            <td id="1,1" onClick="putMark('1,1')"></td>
+            <td id="1,2" onClick="putMark('1,2')"></td>
+            <td id="1,3" onClick="putMark('1,3')"></td>
+        </tr>
+        <tr>
+            <td id="2,1" onClick="putMark('2,1')"></td>
+            <td id="2,2" onClick="putMark('2,2')"></td>
+            <td id="2,3" onClick="putMark('2,3')"></td>
+        </tr>
+        <tr>
+            <td id="3,1" onClick="putMark('3,1')"></td>
+            <td id="3,2" onClick="putMark('3,2')"></td>
+            <td id="3,3" onClick="putMark('3,3')"></td>
+        </tr>
+    </table>
+</body>
+</html>

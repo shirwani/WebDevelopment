@@ -1,0 +1,86 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        #unsortedArray {
+            background-color:   orange;
+            vertical-align:     middle;
+            border:             1px solid #444444;
+            position:           relative;
+            padding:            10px;
+        }
+        #sortedArray {
+            background-color:   #ddeedd;
+            vertical-align:     middle;
+            border:             1px solid #bbccbb;
+            position:           relative;
+            padding:            10px;
+            width:              50%;
+        }
+    </style>
+    <script>
+        /**********
+         * Insertion sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Quicksort
+         *
+         * Pick middle element, move all elements < pivot to left, all > pivot to right. Recurse left and right sub-arrays.
+         **********/
+        var str = ""
+
+        function quickSortArray(){
+            var array = [1, 12, 5, 26, 7, 14, 3, 7, 2]
+            document.getElementById("unsortedArray").innerHTML = array
+
+            str += "<ul>"
+            str += "<li>" + array
+            qSort(array, 0, array.length - 1)
+            str += "</ul>"
+            document.getElementById("sortedArray").innerHTML = str
+        }
+
+        function qSort(array, first, last){
+            var i = first
+            var j = last
+            var left, right
+            var pivotVal = array[Math.floor((i + j)/2)]
+
+            while(i <= j){
+                while(array[i] < pivotVal){
+                    i++
+                }
+                while(array[j] > pivotVal){
+                    j--
+                }
+                if(i <= j){
+                    left  = array[i]
+                    right = array[j]
+                    array[i] = right
+                    array[j] = left
+                    i++
+                    j--
+                }
+                str += "<li>" + array
+            }
+            // recursion
+            if(first < j){
+                qSort(array, first, j)
+            }
+            if(i < last){
+                qSort(array, i, last)
+            }
+        }
+    </script>
+</head>
+<body onload = "quickSortArray()">
+    <h2>Quick Sort</h2>
+    <hr><br>
+    Unsorted array:<br><br>
+    <span id="unsortedArray"></span>
+    <br><br><br>
+    Sorted array:
+    <div id="sortedArray"></div>
+</body>
+</html>

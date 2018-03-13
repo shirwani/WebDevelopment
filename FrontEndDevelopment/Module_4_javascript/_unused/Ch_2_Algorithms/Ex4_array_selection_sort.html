@@ -1,0 +1,66 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        #unsortedArray {
+            background-color:   orange;
+            vertical-align:     middle;
+            border:             1px solid #444444;
+            position:           relative;
+            padding:            10px;
+        }
+        #sortedArray {
+            background-color:   #ddeedd;
+            vertical-align:     middle;
+            border:             1px solid #bbccbb;
+            position:           relative;
+            padding:            10px;
+            width:              30%;
+        }
+    </style>
+    <script>
+        /**********
+         * Selection sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Selection_sort
+         *
+         * Go through the array left to right, swapping element with smallest element on right.
+         **********/
+        function selectionSortArray(){
+            var array = [5, 1, 12, -5, 16, 2, 21, 14]
+            document.getElementById("unsortedArray").innerHTML = array
+
+            var str = "<ul>"
+            for(var i=0; i<array.length; i++){
+                var minVal = array[i]
+                var minIdx = i
+                // find location of min value
+                for(var j=i; j<array.length; j++){
+                    if(array[j] < minVal){
+                        minVal = array[j]
+                        minIdx = j
+                    }
+                }
+                // swap
+                var tmp = array[i]
+                array[i] = minVal
+                array[minIdx] = tmp
+                str += "<li>" + array
+            }
+            str += "</ul>"
+            document.getElementById("sortedArray").innerHTML = str
+        }
+    </script>
+</head>
+<body onload = "selectionSortArray()">
+    <h2>Selection Sort</h2>
+    <hr><br>
+    Unsorted array:<br><br>
+    <span id="unsortedArray"></span>
+    <br><br><br>
+    Sorted array:
+    <div id="sortedArray"></div>
+</body>
+</html>

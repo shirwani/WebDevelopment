@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+    <script>
+        function show_data(){
+            let cars = ["Honda", "Hummer", "Ford", "Toyota", "Tesla", "Lotus", "Maserati", "Subaru"]
+            let str = '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '<tr><td align=right>cars[0] :</td><td> [ ' + cars[0] + ' ]</td></tr>'
+            str += '<tr><td align=right>cars[cars.length - 1] :</td><td> [ ' + cars[cars.length - 1] + ' ]</td></tr>'
+            str += '<tr><td align=right>cars[cars.length] :</td><td> [ ' + cars[cars.length] + ' ]</td></tr>'
+            str += '</table>'
+
+            cars.push("Ferrari")
+            str += "<hr><br>Adding element to the end of the array using push()<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            cars.pop()
+            str += "<hr><br>Removing the last element of the array using pop()<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            cars.shift()
+            str += "<hr><br>Removing the first element of the array using shift()<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            cars.unshift("Lamborghini")
+            str += "<hr><br>Adding element at the beginning of the array using unshift()<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            cars.splice(3,2)
+            str += "<hr><br>Removing 2 elements from the array, starting from position 3<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            cars = cars.concat(["MINI", "Chrysler"])
+            str += "<hr><br>Merging arrays using concat<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '</table>'
+
+            vehicles = cars.slice(1,4)
+            str += "<hr><br>Creating a new array with elements of existing array, starting from index 1 and upto element 4 (but not including it) using slice(1,4)<br>"
+
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>vehicles :</td><td> [ ' + vehicles + ' ]</td></tr>'
+            str += '<tr><td align=right>vehicles.length :</td><td> ' + vehicles.length + ' </td></tr>'
+            str += '</table>'
+
+            document.getElementById("output").innerHTML = str
+        }
+    </script>
+</head>
+<body onload="show_data()">
+    <div id="output"></div>        
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        table {
+            background-color:   white;
+            padding:            2px;
+        }
+        td {
+            background-color:   white;
+            width:              20px;
+            text-align:         center;
+        }
+    </style>
+    <script>
+        /**********
+         * Insertion sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Insertion_sort
+         *
+         * Go through array left to right, shifting element left (by swapping) to correct spot.
+         **********/
+        async function insertionSortArray(){
+            var array = [5, 1, 12, -5, 16, 2, 4, -10, 21]
+            disp_array("unsortedArray",array,-1,"")
+
+            for(var i=1; i<array.length; i++){
+                var target = array[i]
+                await sleep(500);
+                disp_array("sortedArray",array,i,"orange")
+                for(var j=i; j>=0; j--){
+                    if(target > array[j]){
+                        break
+                    }else if(target < array[j]){
+                        var tmp = array[j]
+                        array[j] = target
+                        array[j+1] = tmp
+                        await sleep(500);
+                        disp_array("sortedArray",array,j,"red")
+                    }
+                }
+            }
+            await sleep(500);
+            disp_array("sortedArray",array,-1,"")
+        }
+
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function disp_array(span,array,x,xcolor){
+            var str = ""
+            str += "<table>"
+            str += "<tr>"
+            var color = "white"
+
+            for(var i=0; i<array.length; i++){
+                if(i == x){
+                    color = xcolor
+                }else{
+                    color = "white"
+                }
+                str += "<td style='background-color:" + color + "'>" + array[i] + "</td>"
+            }
+            str += "</tr>"
+            str += "</table>"
+            document.getElementById(span).innerHTML = str
+        }
+    </script>
+</head>
+<body onload = "insertionSortArray()">
+    <h2>Insertion Sort</h2>
+    <hr><br>
+    Unsorted array:<br>
+    <span id="unsortedArray"></span>
+    <br>
+    Sorted array:<br>
+    <span id="sortedArray"></span>
+</body>
+</html>

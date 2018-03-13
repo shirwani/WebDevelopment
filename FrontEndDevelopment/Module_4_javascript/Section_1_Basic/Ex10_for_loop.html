@@ -1,0 +1,24 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <p id="output"></p>
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW", "Audi", "Honda", "Ford"];
+        var str = ""
+
+        for(let i=0; i<cars.length; i++){
+            str += cars[i] + "<br>"
+        }
+
+        document.getElementById("output").innerHTML = str
+    </script>
+</body>
+</html>

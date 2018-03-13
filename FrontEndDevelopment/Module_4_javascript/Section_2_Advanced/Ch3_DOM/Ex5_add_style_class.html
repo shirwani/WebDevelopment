@@ -1,0 +1,67 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:        Arial;
+            font-size:          13px;
+        }
+        td{
+            padding:            20px;
+            text-align:         center;
+        }
+        img{
+            width:              100px;
+        }
+        .big-image{
+            width:              200px;
+        }
+        th{
+            background-color:   purple;
+            color:              white;
+            padding:            10px;
+            font-weight:        normal;
+
+        }
+    </style>
+    <script>
+        function add_planet(){
+            let table   = document.querySelector("#mytable")
+            let tr      = document.createElement("tr")
+            let tdleft  = document.createElement("td")
+            let tdright = document.createElement("td")
+            let img     = document.createElement("img")
+
+            let planet  = document.querySelector("#planet_name").value
+            img.src="../pics/planets/"+planet+".jpeg"
+
+            // Add events
+            img.addEventListener("mouseover", function(){change_style(this)})
+            img.addEventListener("mouseout",  function(){reset_style(this)})
+
+            table.appendChild(tr)
+            tr.appendChild(tdleft)
+            tr.appendChild(tdright)
+            tdleft.appendChild(document.createTextNode(planet))
+            tdright.appendChild(img)
+        }
+
+        function change_style(e){
+            e.classList.add("big-image")
+        }
+        function reset_style(e){
+            e.classList.remove("big-image")
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="planet_name" placeholder="Planet Name">
+    <button onClick="add_planet()">Add Planet</button>
+    
+    <br><br><hr><br>
+
+    <table id="mytable" border=1>
+        <th>Planet Name</th><th>Planet Image</th>
+    </table>
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        document.getElementById("output").innerHTML = "Go to JavaScript Console in the browser window"
+
+        var make = "Honda"
+        var model = "Civic"
+        var str = make + '_' + model
+        console.log(str)
+        console.log(str.length)
+
+        // Quotes and escape characters inside strings
+        console.log("\"Quotes\" and escape \\backslashes\\ inside strings")
+
+        // String Methods
+        console.log("ABCDEFGHIJKLMNOPQRSTUVWXYZ".length)
+
+        // Finding a substring: indexOf(), lastIndexOf(), search()
+        str = "The first FOX, the second FOX and the last FOX"
+        console.log(str.indexOf("FOX"))
+        console.log(str.indexOf("FOX", 20))
+        console.log(str.indexOf("FOX", 30))
+        console.log(str.lastIndexOf("FOX"))
+        console.log(str.search("FOX"))
+
+        // Replace a substring: replace()
+        console.log(str.replace("FOX", "CAT"))      // Replace the first FOX
+        console.log(str.replace(/FOX/g, "CAT"))     // Replace every FOX
+        console.log(str.replace(/fox/i, "CAT"))     // Replace case-insentively
+        console.log(str.replace(/fox/ig, "CAT"))    // Replace every FOX case-insentively
+
+        // Converting upper/lower case: toUpperCase(), toLowerCase()
+        console.log(str.toUpperCase())
+        console.log(str.toLowerCase())
+
+        // Extracting a string: slice(), substring(), substr()
+        str = "Apple, Banana, Carrot"
+        console.log(str.slice(7,13))        // start and end index
+        console.log(str.slice(7))           // start index only
+        console.log(str.slice(-14,-8))      // Negative indices start counting from the end
+        console.log(str.slice(-14))         // Negative start index only
+
+        console.log(str.substring(7,13))    // Does not take negative indices
+        console.log(str.substring(7))       // Does not take negative indices
+
+        console.log(str.substr(7))          // First index only
+        console.log(str.substr(7,6))        // Second index is length
+        console.log(str.substr(-14,6))      // Second index is length
+
+        // Split string into an array: split()
+        console.log(str.split(","))
+        console.log(str.split(",")[0])
+    </script>
+</body>
+</html>

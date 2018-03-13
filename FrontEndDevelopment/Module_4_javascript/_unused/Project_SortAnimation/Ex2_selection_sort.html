@@ -1,0 +1,85 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        table {
+            background-color:   white;
+            padding:            2px;
+        }
+        td {
+            background-color:   white;
+            width:              20px;
+            text-align:         center;
+        }
+    </style>
+    <script>
+        /**********
+         * Selection sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Selection_sort
+         *
+         * Go through the array left to right, swapping element with smallest element on right.
+         **********/
+        async function selectionSortArray(){
+            var array = [5, 1, 12, -5, 16, 2, 4, -10, 21]
+            disp_array("unsortedArray",array,-1,-1,"")
+
+            for(var i=0; i<array.length; i++){
+                var minVal = array[i]
+                var minIdx = i
+                for(var j=i; j<array.length; j++){
+                    await sleep(500);
+                    disp_array("sortedArray",array,i,j,"orange")
+                    if(array[j] < minVal){
+                        minVal = array[j]
+                        minIdx = j
+                    }
+                }
+                await sleep(500);
+                disp_array("sortedArray",array,i,minIdx,"red")
+                var tmp = array[i]
+                array[i] = minVal
+                array[minIdx] = tmp
+                await sleep(500);
+                disp_array("sortedArray",array,i,minIdx,"red")
+            }
+            await sleep(500);
+            disp_array("sortedArray",array,-1,-1,"")
+        }
+
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function disp_array(span,array,x,y,xcolor){
+            var str = ""
+            str += "<table>"
+            str += "<tr>"
+            var color = "white"
+
+            for(var i=0; i<array.length; i++){
+                if(i == x || i == y){
+                    color = xcolor
+                }else{
+                    color = "white"
+                }
+                str += "<td style='background-color:" + color + "'>" + array[i] + "</td>"
+            }
+            str += "</tr>"
+            str += "</table>"
+            document.getElementById(span).innerHTML = str
+        }
+    </script>
+</head>
+<body onload = "selectionSortArray()">
+    <h2>Selection Sort</h2>
+    <hr><br>
+    Unsorted array:<br>
+    <span id="unsortedArray"></span>
+    <br>
+    Sorted array:<br>
+    <span id="sortedArray"></span>
+</body>
+</html>

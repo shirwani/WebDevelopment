@@ -1,0 +1,16 @@
+##############
+# SETUP APACHE
+##############
+sudo apt-get update
+sudo apt-get -y install apache2
+sudo apache2ctl configtest
+sudo sh -c 'echo "ServerName '$(curl ipinfo.io/ip)'" >> /etc/apache2/apache2.conf'
+sudo apache2ctl configtest
+sudo systemctl restart apache2
+sleep 3
+sudo ufw app list
+sleep 3
+sudo ufw app info "Apache Full"
+sleep 3
+sudo ufw allow in "Apache Full"
+sleep 3

@@ -1,0 +1,62 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:        Arial;
+            font-size:          13px;
+        }
+        td{
+            padding:            20px;
+            text-align:         center;
+        }
+        button{
+            padding:            10px;
+            background-color:   #dddddd;
+        }
+        button:hover{
+            background-color:   #bbbbbb;
+        }
+        img{
+            height:             100px;
+            width:              100px;
+        }
+    </style>
+    <script>
+        function change_text(){
+            document.getElementById("one").innerHTML = 'Cell 1'
+        }
+        function change_bgcolor(e){
+            e.style.backgroundColor = "lime"
+            document.getElementsByClassName("foo")[0].style.backgroundColor = "yellow"
+            document.getElementsByClassName("foo")[1].style.backgroundColor = "yellow"
+        }
+        function change_text_color(e){
+            e.style.color = "red"
+            let td = document.getElementsByTagName("td")
+            for(let i=0; i<td.length; i++){
+                td[i].style.color = "blue"
+            }
+        }
+        function change_image(){
+            let i = document.images[0]
+            i.src = "../pics/planets/earth.jpeg"
+        }
+    </script>
+</head>
+<body>
+    <table border=1>
+        <tr><td id="one">One</td></tr>
+        <tr><td id="two" class="foo">Two</td></tr>
+        <tr><td id="three" class="foo">Three</td></tr>
+        <tr><td id="four"><img src="../pics/planets/neptune.jpeg"></td></tr>
+    </table>
+
+  <br><br><hr><br>
+
+  <button onClick="change_text()">change_text</button>
+  <button onClick="change_bgcolor(this)">change_bgcolor</button>
+  <button onClick="change_text_color(this)">change_text_color</button>
+  <button onClick="change_image()">change_image</button>
+</body>
+</html>
+

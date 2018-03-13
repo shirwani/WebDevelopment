@@ -1,0 +1,6 @@
+ip=`cat ./node-ip.txt`
+ssh -i "./JavaScriptDemo.pem" ubuntu@$ip 'sudo rm -rf /home/ubuntu/html/cars4sale; sudo mkdir -p /home/ubuntu/html/cars4sale; sudo chmod a+w /home/ubuntu/html/cars4sale;'
+scp -r -i "./JavaScriptDemo.pem" ../html/* ubuntu@$ip:/home/ubuntu/html/cars4sale;
+ssh -i "./JavaScriptDemo.pem" ubuntu@$ip 'sudo rm -rf /var/www/html/cars4sale; sudo mkdir -p /var/www/html/cars4sale; sudo cp -R ~/html/cars4sale/* /var/www/html/cars4sale;'
+
+

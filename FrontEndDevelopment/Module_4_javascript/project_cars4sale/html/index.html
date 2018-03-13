@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars4Sale</title>
+    <script type="text/javascript" src="./cars4sale.js"></script>
+    <script type="text/javascript" src="./utils.js"></script>
+    <script type="text/javascript" src="./data.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body onload="show_page()">
+    <center>
+    <div id="header">Cars4Sale.com</div>
+    <div id="car_details_div_overlay" onclick="overlay_off(this)">
+        <div id="car_details_div"></div>
+    </div>
+    <div id="main_div">
+        <table border="0" cellpadding="0" cellspacing="5" bgcolor="#eeeeee">
+            <tr>
+                <td valign="top">
+                    <div id="filter_form"></div>
+                </td>
+                <td valign="top">
+                    <div id="search_result"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+    </center>
+</body>
+</html>

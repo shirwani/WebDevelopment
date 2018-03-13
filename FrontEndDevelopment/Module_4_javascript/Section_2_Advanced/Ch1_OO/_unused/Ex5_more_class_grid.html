@@ -1,0 +1,90 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../utils/style.css">
+    <style>
+        table {
+            background-color:   #bbbbbb;
+            border-spacing:     1px;
+            border-collapse:    separate;
+        }
+        td{
+            background-color:   grey;
+            height:             30px;
+            width:              30px;
+        }
+    </style>
+</head>
+<body>
+    Click on a cell:<br>
+    <div id="output"></div>
+
+    <script>
+        var _str = ""
+        function print(str){
+            _str += str
+            document.getElementById("output").innerHTML = _str
+        }
+
+        var grid = new Grid(10,30)
+
+        /*** Class Grid ***/
+        function Grid(width,height){
+            this.width  = width
+            this.height = height
+            this.cells  = new Array()
+
+            // Populate the cells array
+            for(var i=0; i<this.height; i++){
+                for(var j=0; j<this.width; j++){
+                    this.cells.push(new Cell(i,j))
+                }
+            }
+
+            // Print the table
+            print("<table>")
+            for(var i=0; i<height; i++){
+                print("<tr>")
+                for(var j=0; j<width; j++){
+                    var id = i + '-' + j
+                    print("<td onClick=clickCell('"+id+"') id='"+id+"'></td>")
+                }
+                print("</tr>")
+            }
+            print("</table>")
+
+            /*** Find cell by id ***/
+            this.getCellById = function(id){
+                for(var i=0; i<this.cells.length; i++){
+                    if(this.cells[i].getId() == id){
+                        return(this.cells[i])
+                    }
+                }
+            }
+        }
+
+        /*** Class Cell ***/
+        function Cell(x,y){
+            this.id = x + '-' + y
+
+            /*** Return cell id ***/
+            this.getId = function(){
+                return(this.id)
+            }
+
+            /*** Change cell color ***/
+            this.click = function(){
+                var e = document.getElementById(this.id)
+                if(e.style.backgroundColor == "yellow"){
+                    e.style.backgroundColor = "grey"
+                }else{
+                    e.style.backgroundColor = "yellow"
+                }
+            }
+        }
+
+        function clickCell(id){
+            grid.getCellById(id).click()
+        }
+    </script>
+</body>
+</html>

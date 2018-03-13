@@ -1,0 +1,32 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <p id="A"></p>
+    <p id="B"></p>
+    <p id="C"></p>
+    <p id="D"></p>
+    <p id="E"></p>
+    <p id="F"></p>
+
+    <script>
+        var length   = 16;                          // Number
+        var lastName = "Johnson";                   // String
+        var cars     = ["Saab", "Volvo", "BMW"];    // Array
+        var x        = {Name:"John Doe", age:26};   // Object
+
+        document.getElementById('A').innerHTML = length
+        document.getElementById('B').innerHTML = lastName
+        document.getElementById('C').innerHTML = cars
+        document.getElementById('D').innerHTML = x
+        document.getElementById('E').innerHTML = x.Name
+        document.getElementById('F').innerHTML = x.age
+    </script>
+</body>
+</html>

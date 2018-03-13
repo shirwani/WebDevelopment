@@ -1,0 +1,104 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color:   white;
+            font-family:        Arial;
+            font-size:          12px;
+        }
+        tr {
+            background-color:   white;
+            color:              black;
+            font-size:          12px;
+            text-align:         center;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="1" cellspacing="1">
+        <tr><td align="right">Select animal(s) to create:</td>
+            <td align="left">
+              <input id="cat_checkbox"   type="checkbox" name="type" value="cat"   checked>Cat
+              <input id="dog_checkbox"   type="checkbox" name="type" value="dog"   checked>Dog
+              <input id="fox_checkbox"   type="checkbox" name="type" value="fox"   checked>Fox
+              <input id="other_checkbox" type="checkbox" name="type" value="other" checked>Other
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <input type="button" value="Create" onClick="addAnimals()">
+    <br/><hr/><br/>
+    <div id="output"></div>
+    <script>
+        var animals = []
+
+        /*** Class Animal ***/
+        class Animal {
+            constructor(name, sound){
+                this.name  = name
+                this.sound = sound
+            }
+
+            toString(){
+                return ""
+                    + "<tr>"
+                    + "<td align=right>" + this.constructor.name  + ": </td>"
+                    + "<td align=left>"  + this.name + "</td>"
+                    + "<td align=left>(Sound: " + this.sound + ")</td>"
+                    + "</tr>"
+            }
+        }
+
+        /*** Class Cat ***/
+        class Cat extends Animal {
+            constructor(name){
+                super(name, "Meow")
+            }
+        }
+        /*** Class Dog ***/
+        class Dog extends Animal {
+            constructor(name){
+                super(name)
+                this.sound = "Woof";
+            }
+        }
+        /*** Class Fox ***/
+        class Fox extends Animal {
+            constructor(name){
+                super()
+                this.name = name;
+            }
+        }
+
+        /*** Add animal based on user input into HTML form ***/
+        function addAnimals(){
+            animals = []
+            if(document.getElementById("cat_checkbox").checked){
+                animals.push(new Cat("Felix"))
+            }
+            if(document.getElementById("dog_checkbox").checked){
+                animals.push(new Dog("Woofer"))
+            }
+            if(document.getElementById("fox_checkbox").checked){
+                animals.push(new Fox("Foxy"))
+            }
+            if(document.getElementById("other_checkbox").checked){
+                animals.push(new Animal("Molly"))
+            }
+            printAnimalsTable()
+        }
+
+        /*** Print all animals in a table ***/
+        function printAnimalsTable(){
+            let htmlstr = `
+                <table border=0 cellpadding=1 cellspacing=1 bgcolor=white>
+            `
+            for(let i=0; i<animals.length; i++){
+                htmlstr += animals[i] // Call the built-in or overloaded toString() method
+            }
+            htmlstr += '</table>'
+            document.getElementById("output").innerHTML = htmlstr
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        var str = ""
+        var i = 0;
+
+        while(i < 10){
+            i++
+            if(i == 4) {
+                str += '[ Skipping over i = ' + i + ' ]<br>'
+                continue;
+            }else if(i == 8) {
+                str += '[ Breaking out of the loop at j = ' + 8 + ' ]<br>'
+                break;
+            }
+            str += i + "<br>"
+        }
+
+        str += "<br><hr><br>"
+        
+        for(let i=0; i<5; i++){
+            str += 'i = ' + i + "<br>"
+            str += "<ul>"
+            for(let j=0; j<5; j++){
+                if(j == 2){
+                    str += '<li>[ Breaking out of the inner loop at j = ' + j + ' ]<br>'
+                    break
+                }
+                str += "<li>" + j
+            }
+            str += "</ul>"
+        }
+
+        document.getElementById("output").innerHTML = str
+    </script>
+</body>
+</html>

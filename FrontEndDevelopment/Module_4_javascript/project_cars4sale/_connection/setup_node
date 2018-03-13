@@ -1,0 +1,5 @@
+ip=`cat ./node-ip.txt`
+scp -i "./JavaScriptDemo.pem" ./apache_setup ubuntu@$ip:/home/ubuntu/.
+ssh -i "./JavaScriptDemo.pem" ubuntu@$ip 'sudo chmod +x ./apache_setup; ./apache_setup;'
+
+

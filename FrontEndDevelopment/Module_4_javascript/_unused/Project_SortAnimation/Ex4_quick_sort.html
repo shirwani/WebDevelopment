@@ -1,0 +1,117 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        table {
+            background-color:   white;
+            padding:            2px;
+        }
+        td {
+            background-color:   white;
+            width:              20px;
+            text-align:         center;
+        }
+    </style>
+    <script>
+        /**********
+         * Insertion sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Quicksort
+         *
+         * Pick middle element, move all elements < pivot to left, all > pivot to right. Recurse left and right sub-arrays.
+         **********/
+        var array = [5, 1, 12, -5, 16, 2, 4, -10, 21]
+        async function quickSortArray(){
+            disp_array("unsortedArray",array,-1,-1,-1)
+            qSort(array, 0, array.length - 1)
+        }
+
+        async function qSort(array, first, last){
+            var i = first
+            var j = last
+            var left, right
+            var pivotIdx = Math.floor((i + j)/2)
+            var pivotVal = array[pivotIdx]
+
+            //debug("<br><br>*** [ " + pivotIdx + " ] " + pivotVal + " ***")
+
+            while(i <= j){
+                while(array[i] < pivotVal){
+                    i++
+                }
+                while(array[j] > pivotVal){
+                    j--
+                }
+                if(i <= j){
+                    await sleep(500);
+                    disp_array("sortedArray",array,i,pivotIdx,j)
+                    left  = array[i]
+                    right = array[j]
+                    array[i] = right
+                    array[j] = left
+                    await sleep(500);
+                    disp_array("sortedArray",array,i,pivotIdx,j)
+                    i++
+                    j--
+                }
+            }
+
+            // recursion
+            if(first < j){
+                qSort(array, first, j)
+            }
+            if(i < last){
+                qSort(array, i, last)
+            }
+        }
+
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function disp_array(span,array,x,y,z){
+            var str = ""
+            str += "<table>"
+            str += "<tr>"
+            var color = "white"
+
+            for(var i=0; i<array.length; i++){
+                if(i == x || i == z){
+                    color = "red"
+                }else if(i == y){
+                    color = "white"
+                }else{
+                    color = "white"
+                }
+                str += "<td style='background-color:" + color + "'>" + array[i] + "</td>"
+            }
+            str += "</tr>"
+            str += "</table>"
+            document.getElementById(span).innerHTML = str
+        }
+
+        var __dtext = ""
+        function debug(str){
+            if(str == '-clear'){
+                __dtext = ''
+            }else{
+                __dtext += str + "<br>"
+            }
+            document.getElementById("debug").innerHTML = __dtext;
+        }
+
+    </script>
+</head>
+<body onload = "quickSortArray()">
+    <h2>Quick Sort</h2>
+    <hr><br>
+    Unsorted array:<br>
+    <span id="unsortedArray"></span>
+    <br>
+    Sorted array:<br>
+    <span id="sortedArray"></span>
+    <div id="debug"></div>
+</body>
+</html>

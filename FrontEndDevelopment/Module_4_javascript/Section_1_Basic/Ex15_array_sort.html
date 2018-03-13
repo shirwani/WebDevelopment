@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family:    Arial;
+            font-size:      13px;
+        }
+    </style>
+    <script>
+        function show_data(){
+            let cars = ["Honda", "Hummer", "Ford", "Toyota", "Tesla", "Lotus", "Maserati", "Subaru"]
+            let str = '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>cars :</td><td> [ ' + cars + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.sort() :</td><td> [ ' + cars.sort() + ' ]</td></tr>'
+            str += '<tr><td align=right>cars.length :</td><td> ' + cars.length + ' </td></tr>'
+            str += '<tr><td align=right>cars[0] :</td><td> [ ' + cars[0] + ' ]</td></tr>'
+            str += '<tr><td align=right>cars[cars.length - 1] :</td><td> [ ' + cars[cars.length - 1] + ' ]</td></tr>'
+            str += '<tr><td align=right>cars[cars.length] :</td><td> [ ' + cars[cars.length] + ' ]</td></tr>'
+            str += '</table>'
+
+            str += "<hr><br>Numeric sort<br>"
+
+            let points = [40, 100, 1, 5, 25, 10];
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            str += '<tr><td align=right>Unsorted :</td><td> [ ' + points + ' ]</td></tr>'
+            str += '<tr><td align=right>Sorted :</td><td> [ ' + points.sort() + ' ]</td></tr>'
+            points.sort(function(a, b){return a - b});
+            str += '<tr><td align=right>Numerically Sorted (ascending) :</td><td> [ ' + points + ' ]</td></tr>'
+            points.sort(function(a, b){return b - a});
+            str += '<tr><td align=right>Numerically Sorted (descending) :</td><td> [ ' + points + ' ]</td></tr>'
+            str += '</table>'
+
+            str += "<hr><br>Sorting array of objects on object properties<br>"
+
+            cars = [
+                {type:"Volvo", year:2016},
+                {type:"Saab",  year:2001},
+                {type:"BMW",   year:2010}
+            ]
+            cars.sort(function(a, b){return a.year - b.year});
+            str += '<table border=0 cellpadding=1 cellspacing=1 bgcolor:white>'
+            for(let i=0; i<cars.length; i++){
+                str += '<tr><td align=right>' + cars[i].type + '</td><td> [ ' + cars[i].year + ' ]</td></tr>'
+            }
+            str += '</table>'            
+
+            document.getElementById("output").innerHTML = str
+        }
+    </script>
+</head>
+<body onload="show_data()">
+    <div id="output"></div>        
+</body>
+</html>

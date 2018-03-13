@@ -1,0 +1,63 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family:        Arial,serif;
+            font-size:          Small;
+        }
+        #unsortedArray {
+            background-color:   orange;
+            vertical-align:     middle;
+            border:             1px solid #444444;
+            position:           relative;
+            padding:            10px;
+        }
+        #sortedArray {
+            background-color:   #ddeedd;
+            vertical-align:     middle;
+            border:             1px solid #bbccbb;
+            position:           relative;
+            padding:            10px;
+            width:              30%;
+        }
+    </style>
+    <script>
+        /**********
+         * Insertion sort the array
+         * Reference: http://www.algolist.net/Algorithms/Sorting/Insertion_sort
+         *
+         * Go through array left to right, shifting element left (by swapping) to correct spot.
+         **********/
+        function insertionSortArray(){
+            var array = [7, -5, 2, 16, -4, 5, 4, 9, -1]
+            document.getElementById("unsortedArray").innerHTML = array
+
+            var str = "<ul>"
+            for(var i=1; i<array.length; i++){
+                var target = array[i]
+                for(var j=i; j>=0; j--){
+                    if(target > array[j]){
+                        break
+                    }else if(target < array[j]){
+                        var tmp = array[j]
+                        array[j] = target
+                        array[j+1] = tmp
+                    }
+                }
+                str += "<li>" + array
+            }
+            str += "</ul>"
+            document.getElementById("sortedArray").innerHTML = str
+        }
+    </script>
+</head>
+<body onload = "insertionSortArray()">
+    <h2>Insertion Sort</h2>
+    <hr><br>
+    Unsorted array:<br><br>
+    <span id="unsortedArray"></span>
+    <br><br><br>
+    Sorted array:
+    <div id="sortedArray"></div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<html>
+<head>
+    <style>
+        #inputArray,#inputSearch {
+            width:              40px;
+            height:             40px;
+            text-align:         center;
+            border:             1px solid #444444
+        }
+        #dispArray,#dispSearch {
+            background-color:   orange;
+            vertical-align:     middle;
+            border:             1px solid #444444;
+            position:           relative;
+            padding:            10px;
+            visibility:         hidden;
+        }
+    </style>
+    <script>
+        var array = []
+
+        /**********
+         * Add value to the array
+         **********/
+        function growArray(){
+            var value = document.getElementById("inputArray").value
+            document.getElementById("inputArray").value = ""
+
+            if (isNaN(value)){
+                alert("Please enter a number!")
+                return
+            }
+
+            array.push(value)
+            document.getElementById("dispArray").innerHTML = array
+            document.getElementById("dispArray").style.visibility = "visible"
+            document.getElementById("dispSearch").style.visibility = "hidden"
+        }
+
+        /**********
+         * Search value in the array
+         **********/
+        function searchArray(){
+            var value = document.getElementById("inputSearch").value
+            document.getElementById("inputSearch").value = ""
+
+            if (isNaN(value)){
+                alert("Please enter a number!")
+                return
+            }
+
+            var found = 0
+            for (var i=0; i<array.length; i++){
+                if (array[i] == value){
+                    found = 1
+                    break
+                }
+            }
+
+            if (found){
+                document.getElementById("dispSearch").innerHTML = value + " FOUND in the array!"
+                document.getElementById("dispSearch").style.backgroundColor = "00dd00"
+            }else{
+                document.getElementById("dispSearch").innerHTML = value + " NOT FOUND in the array!"
+                document.getElementById("dispSearch").style.backgroundColor = "#ff0000"
+            }
+            document.getElementById("dispSearch").style.visibility = "visible"
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Enter an integer in the box and hit ENTER to grow array:
+        <input id="inputArray" type="text" onChange="growArray()">
+        <span id="dispArray"></span>
+    </p>
+    <hr>
+    <p>
+        Enter an integer in the box and hit ENTER to search the array:
+        <input id="inputSearch" type="text" onChange="searchArray()">
+        <span id="dispSearch"></span>
+    </p>
+</body>
+</html>

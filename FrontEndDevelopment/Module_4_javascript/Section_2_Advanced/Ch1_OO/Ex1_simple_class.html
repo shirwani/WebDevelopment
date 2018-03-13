@@ -1,0 +1,99 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color:   white;
+            font-family:        Arial;
+            font-size:          12px;
+        }
+        th {
+            background-color:   teal;
+            color:              white;
+            font-size:          12px;
+            height:             30px;
+            font-weight:        normal;
+        }
+        tr {
+            background-color:   white;
+            color:              black;
+            font-size:          12px;
+            text-align:         center;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="1" cellspacing="1">
+        <tr><td align="right">Make:             </td><td align="left"><input id="make"      type="text" value="Acura">  </td></tr>
+        <tr><td align="right">Model:            </td><td align="left"><input id="model"     type="text" value="TLX">    </td></tr>
+        <tr><td align="right">Year:             </td><td align="left"><input id="year"      type="text" value="2018">   </td></tr>
+        <tr><td align="right">Exterior Color:   </td><td align="left"><input id="exterior"  type="text" value="Black">  </td></tr>
+        <tr><td align="right">Interior Color:   </td><td align="left"><input id="interior"  type="text" value="Black">  </td></tr>
+        <tr><td align="right">Price:            </td><td align="left"><input id="price"     type="text" value="40000">  </td></tr>
+        <tr><td align="right">Mileage:          </td><td align="left"><input id="mileage"   type="text" value="9000">   </td></tr>
+    </table>
+    <br/>
+    <input type="button" value="Add" onClick="addCar()">
+    <br/><hr/><br/>
+
+    <div id="output"></div>
+    <script>
+        var cars = []
+        var id = 0;
+
+        /*** Class Car ***/
+        class Car {
+            constructor(make,model,year,exterior,interior,price,mileage){
+                this.id         = ++id
+                this.make       = make
+                this.model      = model
+                this.year       = year
+                this.exterior   = exterior
+                this.interior   = interior
+                this.price      = price
+                this.mileage    = mileage
+            }
+
+            printInfo(){
+                return ""
+                    + "<tr>"
+                    + "<td>" + this.id       + "</td>"
+                    + "<td>" + this.make     + "</td>"
+                    + "<td>" + this.model    + "</td>"
+                    + "<td>" + this.year     + "</td>"
+                    + "<td>" + this.exterior + "</td>"
+                    + "<td>" + this.interior + "</td>"
+                    + "<td>" + this.price    + "</td>"
+                    + "<td>" + this.mileage  + "</td>"
+                    + "</tr>"
+            }
+        }
+
+        /*** Add car based on user input into HTML form ***/
+        function addCar(){
+            let make     = document.getElementById("make").value
+            let model    = document.getElementById("model").value
+            let year     = document.getElementById("year").value
+            let exterior = document.getElementById("exterior").value
+            let interior = document.getElementById("interior").value
+            let price    = document.getElementById("price").value
+            let mileage  = document.getElementById("mileage").value
+
+            cars.push(new Car(make,model,year,exterior,interior,price,mileage))
+            printCarsTable()
+        }
+
+        /*** Print all cars in a table ***/
+        function printCarsTable(){
+            let htmlstr = `
+                <table border=0 cellpadding=1 cellspacing=1 bgcolor=#888888>
+                <th>Id</th><th>Make</th><th>Model</th><th>Year</th><th>Exterior</th><th>Interior</th><th>Print</th><th>Mileage</th>
+            `
+            for(let i=0; i<cars.length; i++){
+                htmlstr += cars[i].printInfo()
+            }
+            htmlstr += '</table>'
+            document.getElementById("output").innerHTML = htmlstr
+        }
+    </script>
+</body>
+</html>

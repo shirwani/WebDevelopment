@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script src="../../utils/utils.js"></script>
+    <script src="./brick_game.js"></script>
+    <style>
+        table.grid{
+            background-color:   #bbbbbb;
+            border-spacing:     1px;
+            border-collapse:    separate;
+        }
+        td.grid{
+            background-color:   grey;
+            height:             30px;
+            width:              30px;
+        }
+        button{
+            padding:            20px;
+            font-size:          20px;
+        }
+    </style>
+</head>
+<body onload="doit()">
+    <table border="0">
+        <tr>
+            <td valign="top"><div id ="grid"></div></td>
+            <td valign="top"><div id ="score"></div></td>
+        </tr>
+    </table>
+    <script>
+        var grid = new Grid(10,15)
+        var game = new Game()
+        game.showScore()
+        dropBrick()
+    </script>
+</body>
+</html>
